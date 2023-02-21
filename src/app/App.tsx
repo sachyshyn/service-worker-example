@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import reactLogo from '@shared/assets/react.svg';
+import { postHttp } from '@entities/post/lib';
 
 export function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    (async () => {
+      const response = await postHttp.getMany();
+      console.log(response);
+    })();
+  }, []);
 
   return (
     <div className="App">
