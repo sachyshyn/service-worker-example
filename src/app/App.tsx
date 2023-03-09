@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import { postHttp, PostCard } from '@entities/post';
 import type { Post } from '@entities/post';
+import { useEffect, useState } from '@shared/lib';
 import { Container, Grid, Typography } from '@shared/ui';
 
 export function App() {
