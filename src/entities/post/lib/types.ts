@@ -1,14 +1,14 @@
-import type { PropsWithChildren } from '@shared/lib';
+import type { PropsWithChildren, ID } from '@shared/lib';
 
 export type PostImage = {
-  id: number | string;
+  id: ID;
   thumbnailUrl: string;
   title: string;
   url: string;
 };
 
 export type Post = {
-  id: number | string;
+  id: ID;
   title: string;
   body: string;
   image: PostImage;

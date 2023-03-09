@@ -1,11 +1,19 @@
 import type { PostPropsType } from '../lib';
+import { Card, CardContent, CardMedia, Typography, Stack } from '@shared/ui';
 
 export function PostCard(props: PostPropsType) {
   return (
-    <section>
-      <img src={props.post.image.thumbnailUrl} alt={props.post.image.title} />
-      <h3>{props.post.title}</h3>
-      <p>{props.post.body}</p>
-    </section>
+    <Card>
+      <CardContent>
+        <Stack direction="row" alignItems="center">
+          <CardMedia
+            sx={{ height: 75, width: 75, mr: 3 }}
+            image={props.post.image.thumbnailUrl}
+            title={props.post.image.title}
+          />
+          <Typography variant="h4">{props.post.title}</Typography>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 }

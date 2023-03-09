@@ -1,36 +1,31 @@
 import { useEffect, useState } from 'react';
-import './App.scss';
-import reactLogo from '@shared/assets/react.svg';
-import { postHttp } from '@entities/post/lib';
+import { postHttp, PostCard } from '@entities/post';
+import type { Post } from '@entities/post';
+import { Container, Grid, Typography } from '@shared/ui';
 
 export function App() {
-  const [count, setCount] = useState(0);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     (async () => {
-      const response = await postHttp.getMany();
-      console.log(response);
+      const fetchedPosts = await postHttp.getMany();
+
+      setPosts(fetchedPosts);
     })();
   }, []);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </div>
+    <Container>
+      <Typography variant="h1" sx={{ mb: 3, mt: 3 }}>
+        News Simple App
+      </Typography>
+      <Grid container spacing={2}>
+        {posts.map((post) => (
+          <Grid item sx={{ width: '100%' }} key={post.id}>
+            <PostCard post={post} />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 }

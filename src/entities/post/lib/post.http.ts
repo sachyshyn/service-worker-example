@@ -1,6 +1,6 @@
 import { httpService } from '@shared/api';
 import { LIMIT, OFFSET } from '@shared/config';
-import { DEFAULT_LIMIT } from '@shared/lib';
+import { DEFAULT_LIMIT, ID } from '@shared/lib';
 import { Post, PostImage } from './types';
 
 export const postHttp = {
@@ -27,7 +27,7 @@ export const postHttp = {
     return mapper;
   },
 
-  getOneById: async (id: number | string): Promise<Post> => {
+  getOneById: async (id: ID): Promise<Post> => {
     const [{ data: post }, { data: image }] = await Promise.all([
       httpService.get<Omit<Post, 'image'>>(`posts/${id}`),
       httpService.get<PostImage>(`photos/${id}`)
