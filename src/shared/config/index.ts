@@ -1,1 +1,1 @@
-export { API_URL, LIMIT, OFFSET } from './api';
+export { API_URL, LIMIT, OFFSET, getRootElement } from './api';

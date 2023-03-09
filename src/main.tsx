@@ -1,10 +1,7 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { withProviders } from '@app/providers';
+import { createRootElement } from '@shared/lib';
 import { App } from './app';
 import './index.css';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+const rootElement = createRootElement();
+rootElement.render(withProviders(App));
