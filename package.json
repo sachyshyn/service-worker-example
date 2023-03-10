@@ -14,7 +14,7 @@
     "lint:js": "eslint --config ./.eslintrc.json src --ext .ts,.tsx,.js,.jsx",
     "lint:style": "npx stylelint \"src/**/*.{scss,css}\"",
     "lint": "npm run lint:js && npm run lint:style",
-    "test:unit": "vitest run",
+    "test:unit": "vitest run --mode test",
     "prehusky:install": "rimraf .husky",
     "husky:install": "npx husky install",
     "set-git-hook:prepush": "npx husky add .husky/pre-push \"npm run lint && npm run test:unit && npm run build && npm run prebuild\"",
@@ -29,7 +29,8 @@
     "compose-function": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.8.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
