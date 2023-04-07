@@ -8,9 +8,11 @@
   </head>
   <body>
     <div id="root"></div>
-    <script defer>
+    <script defer type="module">
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js').then(console.log).catch(console.error);
+        const mode = import.meta.env.MODE;
+        const serviceWorkerUrl = `/sw.js?mode=${mode}`;
+        navigator.serviceWorker.register(serviceWorkerUrl).catch(console.error);
       } else {
         console.log('Service workers are not supported.');
       }
