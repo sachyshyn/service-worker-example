@@ -11,7 +11,7 @@
     "start:sw": "tsc --watch --project tsconfig.sw.json",
     "start": "concurrently \"npm run start:dev\" \"npm run start:sw\"",
     "prebuild": "rimraf dist",
-    "build": "tsc --project tsconfig.json && vite build && tsc --project tsconfig.sw.json",
+    "build": "tsc --project tsconfig.json && tsc --project tsconfig.sw.json && vite build",
     "preview": "vite preview --port 4040",
     "lint:js": "eslint --config ./.eslintrc.json src --ext .ts,.tsx,.js,.jsx",
     "lint:style": "npx stylelint \"src/**/*.{scss,css}\"",
