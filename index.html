@@ -8,6 +8,15 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script defer type="module">
+      if ('serviceWorker' in navigator) {
+        const mode = import.meta.env.MODE;
+        const serviceWorkerUrl = `/sw.js?mode=${mode}`;
+        navigator.serviceWorker.register(serviceWorkerUrl).catch(console.error);
+      } else {
+        console.log('Service workers are not supported.');
+      }
+    </script>
+    <script defer type="module" src="/src/main.tsx"></script>
   </body>
 </html>

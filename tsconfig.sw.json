@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ESNext", "WebWorker"],
+    "noEmit": false,
+    "strict": false,
+    "outDir": "public",
+    "target": "ES6"
+  },
+  "exclude": [],
+  "include": ["src/shared/api/workers/*"]
+}
